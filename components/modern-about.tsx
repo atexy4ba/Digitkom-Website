@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
 import { Award, Target, Users, Zap } from "lucide-react"
 
 export default function ModernAbout() {
@@ -28,7 +27,6 @@ export default function ModernAbout() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">Clients Satisfaits</p>
-              <Progress value={100} className="mt-2" />
             </CardContent>
           </Card>
 
@@ -41,7 +39,7 @@ export default function ModernAbout() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">Taux de Réussite</p>
-              <Progress value={100} className="mt-2" />
+              
             </CardContent>
           </Card>
 
@@ -54,7 +52,6 @@ export default function ModernAbout() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">Années d'Expérience</p>
-              <Progress value={85} className="mt-2" />
             </CardContent>
           </Card>
 
@@ -67,7 +64,6 @@ export default function ModernAbout() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">Projets Réalisés</p>
-              <Progress value={95} className="mt-2" />
             </CardContent>
           </Card>
         </div>

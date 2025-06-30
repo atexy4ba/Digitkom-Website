@@ -43,11 +43,11 @@ const services = [
   },
   {
     id: 6,
-    title: "Analytics & Data",
-    icon: BarChart,
-    description: "Analyse de données et reporting",
+    title: "Web Design",
+    icon: Palette,
+    description: "Interfaces utilisateur intuitives et modernes.",
     details:
-      "Mise en place d'outils d'analyse, tableaux de bord personnalisés, insights pour optimiser vos performances.",
+      "Nous concevons des maquettes et prototypes interactifs avec Figma pour créer des expériences utilisateur exceptionnelles et engageantes.",
   },
 ]
 
@@ -69,6 +69,94 @@ export default function InteractiveServices() {
           {services.map((service) => {
             const IconComponent = service.icon
             const isHovered = hoveredService === service.id
+            const isAnimatedCard = service.id === 6
+
+            if (isAnimatedCard) {
+              return (
+                <Card
+                  key={service.id}
+                  className="animated-card bg-white shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border-0 overflow-hidden"
+                  onMouseEnter={() => setHoveredService(service.id)}
+                  onMouseLeave={() => setHoveredService(null)}
+                >
+                  <CardContent className="p-6 lg:p-8 text-center h-full flex flex-col">
+                    {/* Icon stays on top and animates on its own */}
+                    <div
+                      className={`w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center transition-all duration-500 transform ${
+                        isHovered
+                          ? "bg-gradient-to-br from-purple-500 to-violet-600 scale-110 rotate-3"
+                          : "bg-gradient-to-br from-purple-100 to-violet-100"
+                      }`}
+                    >
+                      <IconComponent
+                        className={`w-8 h-8 lg:w-10 lg:h-10 transition-all duration-500 ${
+                          isHovered ? "text-white scale-110" : "text-purple-600"
+                        }`}
+                      />
+                    </div>
+
+                    {/* Container for swappable content */}
+                    <div className="relative flex-grow h-full">
+                      {/* Static content */}
+                      <div className={`static-content transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
+                        <h3 className="text-lg lg:text-xl font-bold mb-3 text-gray-900">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-600 mb-4 text-sm lg:text-base">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      {/* Animated content */}
+                      <div className={`animated-content absolute inset-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 614 390"
+                          className="absolute inset-0 w-full h-full"
+                        >
+                          <g>
+                            <g className="box-animation">
+                              <path
+                                strokeWidth="2"
+                                stroke="#2563EB"
+                                fill="rgba(37, 99, 235, 0.05)"
+                                d="M28 20H587V306H28V20Z"
+                              ></path>
+                              <path strokeWidth="2" stroke="#2563EB" fill="white" d="M33 15H23V25H33V15Z"></path>
+                              <path strokeWidth="2" stroke="#2563EB" fill="white" d="M33 301H23V311H33V301Z"></path>
+                              <path strokeWidth="2" stroke="#2563EB" fill="white" d="M592 301H582V311H592V301Z"></path>
+                              <path strokeWidth="2" stroke="#2563EB" fill="white" d="M592 15H582V25H592V15Z"></path>
+                            </g>
+                            <g className="cursor-animation">
+                              <path
+                                strokeWidth="2"
+                                stroke="white"
+                                fill="#2563EB"
+                                d="M453.383 343L448 317L471 331L459.745 333.5L453.383 343Z"
+                              ></path>
+                            </g>
+                          </g>
+                        </svg>
+                        <div className="relative z-10 flex flex-col justify-center h-full text-center p-4">
+                            <h3 className="text-lg lg:text-xl font-bold mb-3 text-gray-900">
+                                {service.title}
+                            </h3>
+                            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                {service.details}
+                            </p>
+                             <div className="mt-auto">
+                                <button className="bg-gradient-to-r from-purple-600 to-violet-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg transition-all duration-300 hover:scale-105">
+                                En savoir plus
+                                </button>
+                             </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            }
 
             return (
               <Card
