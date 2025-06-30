@@ -1,4 +1,3 @@
-import ModernHeader from "@/components/modern-header"
 import ModernHero from "@/components/modern-hero"
 import ModernAbout from "@/components/modern-about"
 import ModernClients from "@/components/modern-clients"
@@ -13,7 +12,7 @@ import { Phone, Mail, MapPin, ArrowRight } from "lucide-react"
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      <ModernHeader />
+      {/* ModernHeader supprimé ici, il est déjà dans le layout global */}
       <ModernHero />
       <ModernAbout />
       <ModernClients />

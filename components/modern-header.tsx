@@ -1,12 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { Menu, X } from "lucide-react"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function ModernHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -14,9 +18,9 @@ export default function ModernHeader() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo à gauche */}
           <div className="flex items-center space-x-2">
-            <div className="flex items-center justify-center">
+            <Link href="/" className="flex items-center justify-center">
               <Image src="/logo digitkom.png" alt="Logo Digitkom" width={40} height={40} priority className="drop-shadow-lg" />
-            </div>
+            </Link>
             <span className="text-lg font-bold">Digitkom</span>
           </div>
 
@@ -38,7 +42,10 @@ export default function ModernHeader() {
 
           {/* Bouton à droite */}
           <div className="flex items-center">
-            <Button className="hidden md:flex bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+            <Button
+              className="hidden md:flex bg-gradient-to-r from-violet-500 to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+              onClick={() => router.push("/devis")}
+            >
               Obtenir un devis
             </Button>
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -63,7 +70,7 @@ export default function ModernHeader() {
               <Button variant="ghost" className="w-full justify-start">
                 Contact
               </Button>
-              <Button className="w-full bg-gradient-to-r from-violet-500 to-purple-600 text-white">
+              <Button className="w-full bg-gradient-to-r from-violet-500 to-purple-600 text-white" onClick={() => { setIsMenuOpen(false); router.push("/devis") }}>
                 Obtenir un devis
               </Button>
             </div>
