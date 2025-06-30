@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Menu, X, Sparkles } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 export default function ModernHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -14,15 +14,10 @@ export default function ModernHeader() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo à gauche */}
           <div className="flex items-center space-x-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 shadow-lg">
-              <Sparkles className="h-5 w-5 text-white" />
+            <div className="flex items-center justify-center">
+              <Image src="/logo digitkom.png" alt="Logo Digitkom" width={40} height={40} priority className="drop-shadow-lg" />
             </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold">Digikom</span>
-              <Badge variant="secondary" className="text-xs">
-                Digital Agency
-              </Badge>
-            </div>
+            <span className="text-lg font-bold">Digitkom</span>
           </div>
 
           {/* Navigation au centre */}
